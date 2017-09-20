@@ -22,7 +22,7 @@ source ./_shared.sh
 LIB_NAME="GmSSL-master"
 LIB_DEST_DIR=${TOOLS_ROOT}/libs
 [ -d ${LIB_DEST_DIR} ] && rm -rf ${LIB_DEST_DIR}
-[ -f "master.zip" ] || wget https://github.com/guanzhi/GmSSL/archive/master.zip;
+[ -f "master.zip" ] || curl https://codeload.github.com/billzbh/GmSSL/zip/master -o master.zip;
 # Unarchive library, then configure and make for specified architectures
 configure_make() {
   ARCH=$1; ABI=$2;
