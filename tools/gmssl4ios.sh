@@ -25,18 +25,18 @@ done
 pwd_path="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
  
 # Setup architectures, library name and other vars + cleanup from previous runs
-ARCHS=("arm64" "armv7s" "armv7" "i386" "x86_64")
+ARCHS=("arm64" "armv7s" "armv7" "i386")
 SDKS=("iphoneos" "iphoneos" "iphoneos" "iphonesimulator" "iphonesimulator")
 PLATFORMS=("iPhoneOS" "iPhoneOS" "iPhoneOS" "iPhoneSimulator" "iPhoneSimulator")
 DEVELOPER=`xcode-select -print-path`
 # If you can't compile with this version, please modify the version to it which on your mac.
 SDK_VERSION=""10.3""
-LIB_NAME="build-tmp"
+LIB_NAME="GmSSL-master"
 LIB_DEST_DIR="${pwd_path}/../output/ios/gmssl-universal"
 HEADER_DEST_DIR="include"
 rm -rf "${HEADER_DEST_DIR}" "${LIB_DEST_DIR}" "${LIB_NAME}"
 
-cp -rf "${pwd_path}/../*" "${LIB_NAME}" 
+[ -f "master.zip" ] || curl https://codeload.github.com/billzbh/GmSSL/zip/master -o master.zip;
  # Unarchive library, then configure and make for specified architectures
 configure_make()
 {
@@ -44,6 +44,7 @@ configure_make()
    if [ -d "${LIB_NAME}" ]; then
        rm -fr "${LIB_NAME}"
    fi
+   unzip -o "master.zip"
    pushd .; cd "${LIB_NAME}";
 
    if [[ "${ARCH}" == "i386" || "${ARCH}" == "x86_64" ]]; then
