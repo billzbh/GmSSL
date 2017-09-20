@@ -155,3 +155,6 @@ Quick Start Guide describes the basic instructions for compiling, installing, an
       * [People's Republic of China password industry standard](http://gmssl.org/docs/standards.html)
 
       * [National secret algorithm identification OID](http://gmssl.org/docs/oid.html)
+      
+      #### 编译脚本参考
+      https://github.com/leenjewel/openssl_for_ios_and_android
